@@ -1,7 +1,7 @@
 {
   "name": "wtotf",
-  "version": "1.0.0",
-  "description": "Command line tool to convert OTF fonts to WOFF and WOFF2",
+  "version": "1.1.0",
+  "description": "Command line tool to convert OTF and TTF fonts to WOFF and WOFF2",
   "main": "convert.js",
   "type": "module",
   "bin": {
@@ -10,5 +10,6 @@
   "dependencies": {
     "ttf2woff": "^3.0.0",
     "ttf2woff2": "^5.0.0"
-  }
+  },
+  "license": "MIT"
 }
