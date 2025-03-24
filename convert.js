@@ -23,15 +23,18 @@ function convertFont(inputPath) {
         process.exit(1);
     }
 
-    // Check if file is OTF
-    if (!inputPath.toLowerCase().endsWith('.otf')) {
-        console.error('Error: Input file must be an OTF file');
+    // Check if file is OTF or TTF
+    const isOTF = inputPath.toLowerCase().endsWith('.otf');
+    const isTTF = inputPath.toLowerCase().endsWith('.ttf');
+    if (!isOTF && !isTTF) {
+        console.error('Error: Input file must be an OTF or TTF file');
         process.exit(1);
     }
 
     // Read the input file
     const input = fs.readFileSync(inputPath);
-    const baseName = path.basename(inputPath, '.otf');
+    const extension = isOTF ? '.otf' : '.ttf';
+    const baseName = path.basename(inputPath, extension);
     const dirName = path.dirname(inputPath);
     const fontFamily = baseName.replace(/[^a-zA-Z0-9]/g, '-');
 
@@ -75,8 +78,8 @@ function convertFont(inputPath) {
 const inputFile = process.argv[2];
 
 if (!inputFile) {
-    console.error('Please provide an input OTF file path');
-    console.error('Usage: wtotf <input-file.otf>');
+    console.error('Please provide an input OTF or TTF file path');
+    console.error('Usage: wtotf <input-file.otf|ttf>');
     process.exit(1);
 }
 
